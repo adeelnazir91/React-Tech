@@ -7,13 +7,20 @@ import Message from './components/Message'
  import ParentComponent from './components/ParentComponent'
  import UserGreeting from './components/UserGreeting'
  import Testtabs from './components/Testtabs'
-
+ import ArticleListing from './components/ArticleListing'
+ import ShowArticles from './components/ShowArticles'
+ 
+ 
 function App() {
 
   return (
     <div className="App">
 
-      <Testtabs/>
+       <ShowArticles/>
+
+      {/* <ArticleListing/> */}
+
+      {/* <Testtabs/> */}
 
        {/* <UserGreeting/> */}
          
