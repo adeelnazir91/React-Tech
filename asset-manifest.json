@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/React-Tech/static/css/main.57f34226.css",
-    "main.js": "/React-Tech/static/js/main.6153706c.js",
+    "main.css": "/React-Tech/static/css/main.99ec2ffd.css",
+    "main.js": "/React-Tech/static/js/main.c318d66f.js",
     "index.html": "/React-Tech/index.html",
-    "main.57f34226.css.map": "/React-Tech/static/css/main.57f34226.css.map",
-    "main.6153706c.js.map": "/React-Tech/static/js/main.6153706c.js.map"
+    "main.99ec2ffd.css.map": "/React-Tech/static/css/main.99ec2ffd.css.map",
+    "main.c318d66f.js.map": "/React-Tech/static/js/main.c318d66f.js.map"
   },
   "entrypoints": [
-    "static/css/main.57f34226.css",
-    "static/js/main.6153706c.js"
+    "static/css/main.99ec2ffd.css",
+    "static/js/main.c318d66f.js"
   ]
 }
