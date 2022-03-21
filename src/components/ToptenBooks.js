@@ -6,16 +6,23 @@ function ToptenBooks() {
     const [showBooks, setBooks] = useState('');
     const [searchApiData, setSearchApiData] = useState([]);
     const [filterVal, setFilterVal] = useState('');
+    const [currentPage, setCurrentPage] = useState(1);
+    const [activeIndex, setActiveIndex] = useState(0);
+    const [PosterPerPage] = useState(10)
+
     const counter = { value: 1 }
     const url = 'http://openlibrary.org/search.json?q=the+lord+of+the+rings&page=2'
 
     const getTopBooks = async () => {
 
-        const resp = await fetch(url);
-        const data = await resp.json();
-        console.log(data.docs)
-        setBooks(data.docs)
-        setSearchApiData(data.docs)
+        await fetch(url).then((resp) => {
+            resp.json().then((result => {
+                console.log(result)
+                setBooks(result.docs)
+                setSearchApiData(result.docs)
+            }))
+        })
+
     }
 
     useEffect(() => {
@@ -32,6 +39,26 @@ function ToptenBooks() {
         setFilterVal(e.target.value)
     }
 
+    const IndexofLastPost = currentPage * PosterPerPage
+    const Indexof1stPage = IndexofLastPost - PosterPerPage
+    const currentposts = showBooks.slice(Indexof1stPage, IndexofLastPost)
+
+    const paginate = (pageNumber) => {
+        setCurrentPage(pageNumber)
+
+    }
+
+    const handleOnClick = (index) => {
+        setActiveIndex(index)
+    }
+
+    const totalpost = showBooks.length
+
+    const pageperNumber = []
+
+    for (let i = 1; i <= Math.ceil(totalpost / PosterPerPage); i++) {
+        pageperNumber.push(i)
+    }
 
 
     return (
@@ -41,7 +68,7 @@ function ToptenBooks() {
                 <h3>Top Ten Books</h3>
             </div>
 
-            {showBooks ?
+            {currentposts ?
                 <div>
 
                     <div className="row">
@@ -61,7 +88,7 @@ function ToptenBooks() {
                             </tr>
                         </thead>
                         <tbody>
-                            {showBooks.map((showTitle, index) => {
+                            {currentposts.map((showTitle, index) => {
                                 return (
                                     <tr key={index}>
                                         <td>{counter.value++}</td>
@@ -82,6 +109,24 @@ function ToptenBooks() {
                 : <div><p>Please wait...</p></div>
 
             }
+
+            <div>
+                <nav className='text-center d-inline-block '>
+                    <ul className='pagination'>
+                        {
+                            pageperNumber.map((num, index) => {
+                                return (
+                                    <li className={activeIndex === index ? "active page-item" : "unactive page-item"} onClick={() => handleOnClick(index)} key={index}>
+                                        <a href='#javascript' onClick={() => paginate(num)} className="page-link">{num}</a>
+                                    </li>
+                                )
+                            })
+                        }
+
+                    </ul>
+                </nav>
+            </div>
+
 
         </div>
     );
