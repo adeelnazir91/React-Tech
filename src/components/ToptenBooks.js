@@ -11,7 +11,7 @@ function ToptenBooks() {
     const [PosterPerPage] = useState(10)
 
     const counter = { value: 1 }
-    const url = 'http://openlibrary.org/search.json?q=the+lord+of+the+rings&page=2'
+    const url = 'https://openlibrary.org/search.json?q=the+lord+of+the+rings&page=2'
 
     const getTopBooks = async () => {
 
